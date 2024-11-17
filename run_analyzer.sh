@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Variables
-VENV_PATH="/home/cedric/python-env"
-SCRIPT_PATH="/home/cedric/new-analyzer4.py"
+VENV_PATH="./python-env"
+SCRIPT_PATH="./analyzer.py"
 
 # Vérification de l'existence du venv
 if [ ! -d "$VENV_PATH" ]; then
@@ -16,9 +16,9 @@ echo "Activation de l'environnement virtuel..."
 source "$VENV_PATH/bin/activate"
 
 # Installation des dépendances nécessaires
-# echo "Installation des dépendances requises..."
-# pip install --upgrade pip
-# pip install customtkinter
+echo "Installation des dépendances requises..."
+pip install --upgrade pip
+#ip install customtkinter
 
 # Vérification de l'existence du script
 if [ ! -f "$SCRIPT_PATH" ]; then
