@@ -2,6 +2,7 @@
 Analyzer est un outil qui permet de scanner des fichier avec ClamAV et Maldetect
 
 **Prérequis**
+
 Disposer d’une VM fonctionnelle sous Ubuntu 24.04.
 Avoir un accès utilisateur avec des droits administrateurs (permettant d’utiliser sudo).
 Les fichiers suivants doivent être disponibles :
