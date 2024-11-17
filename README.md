@@ -9,7 +9,7 @@ analyzer.py : Script Python principal de l'application.
 run_analyzer.sh : Script Bash pour automatiser l'exécution de l'application.
 
 
-#**Étape 1 :**
+# **Étape 1 :**
 Installation des dépendances système
 Mettez à jour le système :
 
@@ -39,7 +39,7 @@ Copier le code
 sudo apt install -y maldetect
 
 
-#**Étape 2 :**
+# **Étape 2 :**
 Préparation des fichiers de l'application
 
 Copiez les fichiers sur la VM : Transférez les fichiers analyzer.py et run_analyzer.sh dans le répertoire utilisateur de la VM, par exemple /home/<utilisateur>.
@@ -57,7 +57,7 @@ Copier le code
 chmod +x /home/<utilisateur>/run_analyzer.sh
 
 
-#**Étape 3 :**
+# **Étape 3 :**
 Exécution initiale et configuration
 
 Lancez le script Bash run_analyzer.sh : Ce script configure automatiquement l'environnement virtuel et exécute l'application :
@@ -67,7 +67,7 @@ Copier le code
 ./run_analyzer.sh
 Première exécution :
 
-#**Le script Bash :**
+# **Le script Bash :**
 Crée un environnement virtuel Python dans /home/<utilisateur>/venv.
 Installe les dépendances nécessaires (customtkinter).
 Lance l’application analyzer.py.
@@ -81,7 +81,7 @@ Assurez-vous que les résultats s'affichent et que les rapports sont générés 
 
 Notes supplémentaires
 
-#**Dépannage :**
+# **Dépannage :**
 
 Si le script Python ne se lance pas, vérifiez que customtkinter est bien installé dans l'environnement virtuel :
 
@@ -96,7 +96,7 @@ Rapports :
 Les rapports sont générés sous le format rapport_AA-MM-JJ_hh:mm_nomdufichier.txt dans le répertoire courant de l'application.
 
 
-#**Résumé rapide**
+# **Résumé rapide**
 
 Installez une VM Ubuntu 24.04.
 Mettez à jour le système et installez Python, ClamAV, et Maldetect.
