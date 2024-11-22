@@ -50,7 +50,16 @@ Maldetect :
 
 *bash*
 
-`sudo apt install -y maldetect`
+`wget http://www.rfxn.com/downloads/maldetect-current.tar.gz`
+
+`tar xzf maldetect-current.tar.gz`
+
+Attention, suivant la version de maldetect téléchargé, le ossier peut avoir un autre nom. Ne pas hésiter à utiliser la touche `TAB` pour completer le nom correctement
+
+`cd maldetect-1.6.5/`
+
+`sudo ./install.sh`
+
 
 
 # **Étape 2 :**
