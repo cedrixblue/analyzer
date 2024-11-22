@@ -18,7 +18,7 @@ source "$VENV_PATH/bin/activate"
 # Installation des dépendances nécessaires
 echo "Installation des dépendances requises..."
 pip install --upgrade pip
-#ip install customtkinter
+pip install customtkinter
 
 # Vérification de l'existence du script
 if [ ! -f "$SCRIPT_PATH" ]; then
