@@ -30,7 +30,7 @@ Pour s'assurer que l'environnement virtuel fonctionne, installez les paquets sui
 
 *bash*
 
-`sudo apt install -y python3 python3-venv python3-pip`
+`sudo apt install -y python3 python3.12-tk python3-venv python3-pip`
 
 
 Installez les outils antivirus nécessaires :
@@ -60,6 +60,7 @@ Attention, suivant la version de maldetect téléchargé, le ossier peut avoir u
 
 `sudo ./install.sh`
 
+Fermer le terminal
 
 
 # **Étape 2 :**
