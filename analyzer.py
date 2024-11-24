@@ -21,7 +21,7 @@ class AntivirusApp(ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title("Application Antivirus")
-        self.geometry("600x600")  # Taille initiale
+        self.geometry("600x700")  # Taille initiale
         self.configure(bg=COULEUR_CELADON)
 
         # Création des widgets de la page principale
@@ -57,7 +57,7 @@ class AntivirusApp(ctk.CTk):
         btn_history.pack(pady=5)
 
         btn_quit = ctk.CTkButton(self, text="Quitter", command=self.quit, width=LARGEUR_BOUTON)
-        btn_quit.pack(pady=10)
+        btn_quit.pack(pady=5)
 
     def page_historique(self):
         """Affiche la page historique des scans."""
@@ -98,7 +98,7 @@ class AntivirusApp(ctk.CTk):
         self.label = ctk.CTkLabel(self, text="Contenu du Rapport", font=("Arial", 20))
         self.label.pack(pady=10)
 
-        self.result_box = ctk.CTkTextbox(self, width=500, height=200)
+        self.result_box = ctk.CTkTextbox(self, width=500, height=500)
         self.result_box.pack(pady=10)
 
         if os.path.exists(rapport_nom):

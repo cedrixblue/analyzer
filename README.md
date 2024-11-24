@@ -1,11 +1,10 @@
 # analyzer
-Analyzer est un outil qui permet de scanner des fichier avec ClamAV et Maldetect
+Analyzer est un outil qui permet de scanner des fichiers avec ClamAV et Maldetect
 
 **Prérequis**
 - Disposer d’une VM fonctionnelle sous Ubuntu 24.04.
   
 - Avoir un accès utilisateur avec des droits administrateurs (permettant d’utiliser sudo).
-
 
 - Les fichiers suivants doivent être disponibles :
 
@@ -15,7 +14,7 @@ Analyzer est un outil qui permet de scanner des fichier avec ClamAV et Maldetect
 
 
 # **Étape 1 :**
-Installation des dépendances système
+## Installation des dépendances système
 
 Mettez à jour le système :
 
@@ -24,41 +23,66 @@ Mettez à jour le système :
 `sudo apt update && sudo apt upgrade -y`
 
 
-Installez Python 3.12 et venv : Ubuntu 24.04 inclut Python 3.12.
+Installez Python 3 et venv
 
 Pour s'assurer que l'environnement virtuel fonctionne, installez les paquets suivants :
 
 *bash*
 
-`sudo apt install -y python3 python3.12-tk python3-venv python3-pip`
+`sudo apt install -y python3 python3-tk python3-venv python3-pip`
 
 
-Installez les outils antivirus nécessaires :
+## Installez les outils antivirus nécessaires :
 
 ClamAV :
 
 *bash*
 
-`sudo apt install -y clamav clamav-daemon`
+```
+sudo apt install -y clamav clamav-daemon
 
-`sudo systemctl stop clamav-freshclam.service`
+sudo systemctl stop clamav-freshclam.service
 
-`sudo freshclam  # Met à jour les définitions`
+sudo freshclam  # Met à jour les définitions
+```
 
 
 Maldetect :
 
 *bash*
 
-`wget http://www.rfxn.com/downloads/maldetect-current.tar.gz`
+```
+wget http://www.rfxn.com/downloads/maldetect-current.tar.gz
 
-`tar xzf maldetect-current.tar.gz`
+tar xzf maldetect-current.tar.gz
+```
 
-Attention, suivant la version de maldetect téléchargé, le ossier peut avoir un autre nom. Ne pas hésiter à utiliser la touche `TAB` pour completer le nom correctement
+**Attention**
+: *Suivant la version de maldetect téléchargé, le ossier peut avoir un autre nom. Ne pas hésiter à utiliser la touche `TAB` pour completer le nom correctement*
 
-`cd maldetect-1.6.5/`
+```
+cd maldetect-1.6.5/
 
-`sudo ./install.sh`
+sudo ./install.sh
+```
+
+## Autorisations sudo
+
+Afin d'autoriser l'utilisateur à lancer les mises à jours de signatures il faut ajouter la ligne suivante dans le fichier de configuration sudo
+
+*bash*
+
+`sudo visudo`
+
+A la fin du fichier ajouter les lignes suivantes :
+
+```
+username ALL=(ALL) NOPASSWD: /usr/local/sbin/maldet
+username ALL=(ALL) NOPASSWD: /usr/bin/freshclam
+```
+
+Où *username* est le nom de l'utilisateur qui va executer le script
+
 
 Fermer le terminal
 
@@ -97,13 +121,16 @@ Lancez le script Bash run_analyzer.sh : Ce script configure automatiquement l'en
 
 ## Le script Bash :
 
-Crée un environnement virtuel Python dans /home/<utilisateur>/venv.
+Crée un environnement virtuel Python dans /home/<utilisateur>/python-env.
 
 Installe les dépendances nécessaires (customtkinter).
 
 Lance l’application analyzer.py.
 
 Une fenêtre graphique apparaîtra avec l’interface de l’application.
+
+**Attention**
+: *Il se peut qu'à la fin du scan le terminal demande le mot de passe sudo afin de créer le fichier d'historique. Gardez un oeil sur le terminal ;) .*
 
 
 ## Tester l'application :
@@ -117,28 +144,31 @@ Assurez-vous que les résultats s'affichent et que les rapports sont générés 
 
 ## Dépannage :
 
-Si le script Python ne se lance pas, vérifiez que customtkinter est bien installé dans l'environnement virtuel :
+- 
+    Si le script Python ne se lance pas, vérifiez que customtkinter est bien installé dans l'environnement virtuel :
 
-*bash*
+    *bash*
 
-`source /home/<utilisateur>/venv/bin/activate`
+    ```
+    source /home/<utilisateur>/venv/bin/activate
 
-`pip install customtkinter`
+    pip install customtkinter
+    ```
 
+- Rapports :
 
-Rapports :
+    Les rapports sont générés sous le format rapport_AA-MM-JJ_hh:mm_nomdufichier.txt dans le répertoire courant de l'application.
 
-Les rapports sont générés sous le format rapport_AA-MM-JJ_hh:mm_nomdufichier.txt dans le répertoire courant de l'application.
-
+- Si le scan dure trop longtemp c'est peut être que le terminal attend une action. Vérifiez de temps en temps
 
 # **Résumé rapide**
 
-Installez une VM Ubuntu 24.04.
+1. Installez une VM Ubuntu 24.04.
 
-Mettez à jour le système et installez Python, ClamAV, et Maldetect.
+2. Mettez à jour le système et installez Python, ClamAV, et Maldetect.
 
-Transférez analyzer.py et run_analyzer.sh.
+3. Transférez analyzer.py et run_analyzer.sh.
 
-Exécutez run_analyzer.sh pour configurer et lancer l'application.
+4. Exécutez run_analyzer.sh pour configurer et lancer l'application.
 
 L'application est maintenant prête à être utilisée sur plusieurs machines !
