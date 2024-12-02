@@ -9,7 +9,11 @@ from tkinter import filedialog, END
 import time
 
 # Constantes
-HISTORIQUE_PATH = "historique_scans.txt"
+SAVE_DIR = os.path.expanduser("~/analyzer")
+if not os.path.exists(SAVE_DIR):
+    os.makedirs(SAVE_DIR)  # Crée le dossier s'il n'existe pas
+
+HISTORIQUE_PATH = os.path.join(SAVE_DIR, "historique_scans.txt")
 COULEUR_CELADON = "#ACE1AF"  # Couleur céladon pour le thème clair
 LARGEUR_BOUTON = 200  # Largeur fixe pour tous les boutons
 
@@ -172,7 +176,7 @@ class AntivirusApp(ctk.CTk):
         """Sauvegarde le rapport complet."""
         date = datetime.now().strftime('%y-%m-%d_%H:%M')
         nom_fichier = os.path.basename(fichier)
-        rapport_nom = f"rapport_{date}_{nom_fichier}.txt"
+        rapport_nom = os.path.join(SAVE_DIR, f"rapport_{date}_{nom_fichier}.txt")
         with open(rapport_nom, "w") as f:
             f.write("=== Résultat ClamAV ===\n")
             f.write(clamav_resultat)
